@@ -24,4 +24,5 @@ cmake
 run the commands
 
 `git clone https://github.com/YellowCat98/YohohoScript.git`
-`
+`cmake -B build`
+`cmake --build build --config RelWithDebInfo` or depending on what you want to build on, i build on RelWithDebInfo.
