@@ -57,8 +57,6 @@ std::vector<std::string> Lexer::tokenize() {
         } else if (std::regex_match(word, zeronine)) {
             tokens.emplace_back("[INTEGER]");
             tokens.emplace_back(word);
-        } else if (word == "[END]") {
-            tokens.emplace_back("[END_LINE]");
         } else {
             tokens.emplace_back("[UNKNOWN]");
             tokens.emplace_back(word);
