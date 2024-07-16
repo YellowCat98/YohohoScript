@@ -52,7 +52,7 @@ std::vector<std::string> Lexer::tokenize() {
         if (word.front() == '"' && word.back() == '"') {
             tokens.emplace_back("[STRING]");
             tokens.emplace_back(word.substr(1, word.size() - 2));
-        } else if (word == "[PRINT]" || word == "[ADD]" || word == "[HALT]" || word == "[AWAIT]" || word == "[VAR]") {
+        } else if (word == "[PRINT]" || word == "[ADD]" || word == "[HALT]" || word == "[AWAIT]" || word == "[VAR]" || word == "[INPUT]") {
             tokens.emplace_back(word);
         } else if (std::regex_match(word, zeronine)) {
             tokens.emplace_back("[INTEGER]");

@@ -31,8 +31,11 @@ void Parser::parse() {
             int duration = std::stoi(tokens[token_index + 2]);
             std::this_thread::sleep_for(std::chrono::seconds(duration));
             token_index += 3; // Move past [AWAIT] [INTEGER] value
-        } else if (tokenType == "[VAR]") {
-            std::cout << "yo";
+        } else if (tokenType == "[INPUT]") {
+            std::string value;
+            std::cout << tokens[token_index + 2];
+            std::cin >> value;
+            token_index += 3; // move past [INPUT] [STRING] value
         } else {
             throw std::invalid_argument("Unexpected token: " + tokenType);
         }
