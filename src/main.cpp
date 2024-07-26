@@ -23,6 +23,9 @@ int main(int argc, char* argv[]) {
         std::vector<std::string> token = lex.tokenize();
         Parser par(token);
         par.parse();
+        // for (auto hi : token) {
+        //     std::cout << hi << std::endl;
+        // }
     } catch (const std::exception& e) {
         utils::setColor(4);
         std::cout << "Error:" << std::endl;

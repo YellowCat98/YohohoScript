@@ -43,8 +43,9 @@ Lexer::Lexer(const std::string& sourceCode) : sourceCode(sourceCode) {}
 std::vector<std::string> Lexer::tokenize() {
     std::vector<std::string> tokens = {};
     std::vector<std::string> sourceCode = split(this->sourceCode);
-    std::regex AZ("[A-Za-z]");
+    std::regex AZ("^[A-Za-z]+$");
     std::regex zeronine("[0-9]+");
+    std::regex operators("[=]");
     for (const std::string& word : sourceCode) {
         if (word.empty()) {
             continue;
@@ -56,6 +57,12 @@ std::vector<std::string> Lexer::tokenize() {
             tokens.emplace_back(word);
         } else if (std::regex_match(word, zeronine)) {
             tokens.emplace_back("[INTEGER]");
+            tokens.emplace_back(word);
+        } else if (std::regex_match(word, operators)) {
+            tokens.emplace_back("[OPERATOR]");
+            tokens.emplace_back(word);
+        } else if (std::regex_match(word, AZ)) {
+            tokens.emplace_back("[IDENTIFIER]");
             tokens.emplace_back(word);
         } else {
             tokens.emplace_back("[UNKNOWN]");
